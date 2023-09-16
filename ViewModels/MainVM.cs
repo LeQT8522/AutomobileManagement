@@ -22,14 +22,11 @@ namespace AutomobileManagement.ViewModels
             set
             {
                 SetProperty(ref selectedCar, value);
-                if (value != null)
-                {
-                    Id = value.Id;
-                    Name = value.Name;
-                    Manufacturer = value.Manufacturer;
-                    Price = value.Price;
-                    ReleaseYear = value.ReleaseYear;
-                }
+                Id = value?.Id ?? 0;
+                Name = value?.Name ?? string.Empty;
+                Manufacturer = value?.Manufacturer ?? string.Empty;
+                Price = value?.Price ?? 0;
+                ReleaseYear = value?.ReleaseYear ?? 0;
             }
         }
 
@@ -115,6 +112,7 @@ namespace AutomobileManagement.ViewModels
             selectedCar.Price = Price;
             selectedCar.ReleaseYear = ReleaseYear;
             await carsRepo.UpdateCar(selectedCar);
+            await Load();
         }
 
         private async Task RemoveCar()
