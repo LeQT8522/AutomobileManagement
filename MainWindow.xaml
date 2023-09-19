@@ -12,35 +12,37 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <TextBlock>ID</TextBlock>
-            <TextBox Text="{Binding Id}" IsReadOnly="True" />
-            <TextBlock>Name</TextBlock>
-            <TextBox Grid.Row="1" Text="{Binding Name}" />
-            <TextBlock>Manufacturer</TextBlock>
-            <TextBox Grid.Row="2" Text="{Binding Manufacturer}" />
-            <TextBlock>Price</TextBlock>
+        <StackPanel Background="LightBlue">
+            <TextBlock Margin="5" FontSize="20" Foreground="Red" FontWeight="Bold">Car Information</TextBlock>
+            <TextBlock Margin="5,5,0,0">ID</TextBlock>
+            <TextBox Text="{Binding Id}" IsReadOnly="True"/>
+            <TextBlock Margin="5,5,0,0">Name</TextBlock>
+            <TextBox Grid.Row="1" Text="{Binding Name}"/>
+            <TextBlock Margin="5,5,0,0">Manufacturer</TextBlock>
+            <TextBox Grid.Row="2" Text="{Binding Manufacturer}"/>
+            <TextBlock Margin="5,5,0,0">Price</TextBlock>
             <TextBox Grid.Row="3" Text="{Binding Price}" />
-            <TextBlock>Release year</TextBlock>
-            <TextBox Grid.Row="4" Text="{Binding ReleaseYear}" />
+            <TextBlock Margin="5,5,0,0">Release year</TextBlock>
+            <TextBox Grid.Row="4" Text="{Binding ReleaseYear}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,10,0,0">
-            <Button Command="{Binding AddCarCmd}">Add</Button>
-            <Button Command="{Binding UpdateCarCmd}" Margin="10,0,0,0">Update</Button>
-            <Button Command="{Binding RemoveCarCmd}" Margin="10,0,0,0">Remove</Button>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0" HorizontalAlignment="Center">
+            <Button Width="80" Margin="10" Command="{Binding AddCarCmd}" FontSize="14">Add</Button>
+            <Button Width="80" Command="{Binding UpdateCarCmd}" Margin="10" FontSize="14">Update</Button>
+            <Button Width="80" Command="{Binding RemoveCarCmd}" Margin="10" FontSize="14">Remove</Button>
         </StackPanel>
 
         <DataGrid Grid.Row="2" Grid.ColumnSpan="2" Margin="0,10,0,0" ItemsSource="{Binding Cars}"
                   SelectedItem="{Binding SelectedCar}" IsReadOnly="True" />
+        <Button Grid.Column="1" Grid.Row="3" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="80" Margin="10">Close</Button>
     </Grid>
 </Window>
